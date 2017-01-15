@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPay = new System.Windows.Forms.TabPage();
+            this.tabPayee = new System.Windows.Forms.TabPage();
             this.datePicker = new System.Windows.Forms.DateTimePicker();
             this.btnPrint = new System.Windows.Forms.Button();
             this.txtMemo = new System.Windows.Forms.TextBox();
@@ -48,7 +48,7 @@
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.lblStatus = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
-            this.tabPay.SuspendLayout();
+            this.tabPayee.SuspendLayout();
             this.tabEndorse.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
@@ -57,7 +57,7 @@
             // 
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPay);
+            this.tabControl1.Controls.Add(this.tabPayee);
             this.tabControl1.Controls.Add(this.tabEndorse);
             this.tabControl1.Location = new System.Drawing.Point(16, 57);
             this.tabControl1.Name = "tabControl1";
@@ -65,24 +65,24 @@
             this.tabControl1.Size = new System.Drawing.Size(428, 248);
             this.tabControl1.TabIndex = 0;
             // 
-            // tabPay
+            // tabPayee
             // 
-            this.tabPay.Controls.Add(this.datePicker);
-            this.tabPay.Controls.Add(this.btnPrint);
-            this.tabPay.Controls.Add(this.txtMemo);
-            this.tabPay.Controls.Add(this.lblMemo);
-            this.tabPay.Controls.Add(this.txtAmount);
-            this.tabPay.Controls.Add(this.lblAmount);
-            this.tabPay.Controls.Add(this.txtPayToTheOrderOf);
-            this.tabPay.Controls.Add(this.lblPayToTheOrderOf);
-            this.tabPay.Controls.Add(this.lblDate);
-            this.tabPay.Location = new System.Drawing.Point(4, 29);
-            this.tabPay.Name = "tabPay";
-            this.tabPay.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPay.Size = new System.Drawing.Size(420, 215);
-            this.tabPay.TabIndex = 0;
-            this.tabPay.Text = "Pay";
-            this.tabPay.UseVisualStyleBackColor = true;
+            this.tabPayee.Controls.Add(this.datePicker);
+            this.tabPayee.Controls.Add(this.btnPrint);
+            this.tabPayee.Controls.Add(this.txtMemo);
+            this.tabPayee.Controls.Add(this.lblMemo);
+            this.tabPayee.Controls.Add(this.txtAmount);
+            this.tabPayee.Controls.Add(this.lblAmount);
+            this.tabPayee.Controls.Add(this.txtPayToTheOrderOf);
+            this.tabPayee.Controls.Add(this.lblPayToTheOrderOf);
+            this.tabPayee.Controls.Add(this.lblDate);
+            this.tabPayee.Location = new System.Drawing.Point(4, 29);
+            this.tabPayee.Name = "tabPayee";
+            this.tabPayee.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPayee.Size = new System.Drawing.Size(420, 215);
+            this.tabPayee.TabIndex = 0;
+            this.tabPayee.Text = "Payee";
+            this.tabPayee.UseVisualStyleBackColor = true;
             // 
             // datePicker
             // 
@@ -93,7 +93,7 @@
             this.datePicker.Location = new System.Drawing.Point(105, 6);
             this.datePicker.Name = "datePicker";
             this.datePicker.Size = new System.Drawing.Size(132, 27);
-            this.datePicker.TabIndex = 9;
+            this.datePicker.TabIndex = 0;
             // 
             // btnPrint
             // 
@@ -107,7 +107,7 @@
             this.btnPrint.Location = new System.Drawing.Point(143, 167);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(134, 36);
-            this.btnPrint.TabIndex = 8;
+            this.btnPrint.TabIndex = 4;
             this.btnPrint.Text = "Print";
             this.btnPrint.UseVisualStyleBackColor = false;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
@@ -117,10 +117,10 @@
             this.txtMemo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMemo.Location = new System.Drawing.Point(105, 125);
-            this.txtMemo.MaxLength = 100;
+            this.txtMemo.MaxLength = 24;
             this.txtMemo.Name = "txtMemo";
             this.txtMemo.Size = new System.Drawing.Size(292, 27);
-            this.txtMemo.TabIndex = 7;
+            this.txtMemo.TabIndex = 3;
             // 
             // lblMemo
             // 
@@ -138,10 +138,10 @@
             this.txtAmount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAmount.Location = new System.Drawing.Point(105, 92);
-            this.txtAmount.MaxLength = 14;
+            this.txtAmount.MaxLength = 10;
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(132, 27);
-            this.txtAmount.TabIndex = 5;
+            this.txtAmount.TabIndex = 2;
             // 
             // lblAmount
             // 
@@ -159,10 +159,10 @@
             this.txtPayToTheOrderOf.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPayToTheOrderOf.Location = new System.Drawing.Point(105, 56);
-            this.txtPayToTheOrderOf.MaxLength = 120;
+            this.txtPayToTheOrderOf.MaxLength = 40;
             this.txtPayToTheOrderOf.Name = "txtPayToTheOrderOf";
             this.txtPayToTheOrderOf.Size = new System.Drawing.Size(292, 27);
-            this.txtPayToTheOrderOf.TabIndex = 3;
+            this.txtPayToTheOrderOf.TabIndex = 1;
             // 
             // lblPayToTheOrderOf
             // 
@@ -240,7 +240,7 @@
             this.txtLogicalName.MaxLength = 1000;
             this.txtLogicalName.Name = "txtLogicalName";
             this.txtLogicalName.Size = new System.Drawing.Size(292, 27);
-            this.txtLogicalName.TabIndex = 2;
+            this.txtLogicalName.TabIndex = 0;
             // 
             // errorProvider
             // 
@@ -275,8 +275,8 @@
             this.Text = "Check Printing";
             this.Load += new System.EventHandler(this.Main_Load);
             this.tabControl1.ResumeLayout(false);
-            this.tabPay.ResumeLayout(false);
-            this.tabPay.PerformLayout();
+            this.tabPayee.ResumeLayout(false);
+            this.tabPayee.PerformLayout();
             this.tabEndorse.ResumeLayout(false);
             this.tabEndorse.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
@@ -288,7 +288,7 @@
         #endregion
 
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPay;
+        private System.Windows.Forms.TabPage tabPayee;
         private System.Windows.Forms.TabPage tabEndorse;
         private System.Windows.Forms.TextBox txtMemo;
         private System.Windows.Forms.Label lblMemo;

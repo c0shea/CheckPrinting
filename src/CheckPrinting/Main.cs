@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Drawing;
-using System.Linq.Expressions;
 using System.Windows.Forms;
-using Microsoft.PointOfService;
 
 namespace CheckPrinting
 {
@@ -33,14 +31,20 @@ namespace CheckPrinting
 
         private void ResetStatus()
         {
-            lblStatus.Text = "Ready.";
+            SetStatus("Ready.");
             lblStatus.BackColor = Color.AliceBlue;
         }
 
         private void SetErrorStatus(string errorMessage)
         {
-            lblStatus.Text = errorMessage;
+            SetStatus(errorMessage);
             lblStatus.BackColor = Color.LightPink;
+        }
+
+        private void SetStatus(string message)
+        {
+            lblStatus.Text = message;
+            lblStatus.Refresh();
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -51,83 +55,19 @@ namespace CheckPrinting
             {
                 return;
             }
-            
-            PosPrinter printer;
-            try
-            {
-                printer = GetPrinter(txtLogicalName.Text);
-            }
-            catch (Exception ex)
-            {
-                SetErrorStatus(ex.Message);
-                return;
-            }
-            
-            printer.BeginInsertion(1 * 60 * 1000); // 1 minute
-            printer.EndInsertion();
-            
-            ClosePrinter(printer);
-        }
 
-        private void ClosePrinter(PosPrinter printer)
-        {
-            printer.DeviceEnabled = false;
-            printer.Close();
-        }
-
-        private PosPrinter GetPrinter(string logicalName)
-        {
-            PosExplorer posExplorer;
-            DeviceInfo deviceInfo;
-            PosPrinter posPrinter;
-
-            try
+            SetStatus("Connecting to printer...");
+            using (var printer = new Printer(txtLogicalName.Text))
             {
-                posExplorer = new PosExplorer();
-                deviceInfo = posExplorer.GetDevice(DeviceType.PosPrinter, "132");
-            }
-            catch (Exception)
-            {
-                throw new Exception("Unable to retrieve device information.");
+                SetStatus("Please insert check into printer.");
+                printer.InsertCheck();
+                SetStatus("Printing...");
+                printer.PrintCheck(datePicker.Value, txtPayToTheOrderOf.Text, 123m, txtMemo.Text);
+                SetStatus("Please remove check from printer.");
+                printer.RemoveCheck();
             }
 
-            try
-            {
-                posPrinter = posExplorer.CreateInstance(deviceInfo) as PosPrinter;
-            }
-            catch (Exception)
-            {
-                throw new Exception("Unable to create the device instance.");
-            }
-
-            try
-            {
-                posPrinter.Open();
-            }
-            catch (Exception)
-            {
-                throw new Exception("Unable to open the device.");
-            }
-
-            try
-            {
-                posPrinter.Claim(750);
-            }
-            catch (Exception)
-            {
-                throw new Exception("Unable to claim the device.");
-            }
-
-            try
-            {
-                posPrinter.DeviceEnabled = true;
-            }
-            catch (Exception)
-            {
-                throw new Exception("Unable to enable the device.");
-            }
-
-            return posPrinter;
+            ResetStatus();
         }
 
         private bool ValidatePrint()

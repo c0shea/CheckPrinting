@@ -57,6 +57,7 @@
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="NumberToWords.cs" />
+    <Compile Include="Printer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Main.resx">

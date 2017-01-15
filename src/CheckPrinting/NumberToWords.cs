@@ -2,56 +2,71 @@
 
 namespace CheckPrinting
 {
-    // Credit: http://stackoverflow.com/a/2730393/4403297
     public static class NumberToWords
     {
         /// <summary>
-        /// Converts the <paramref name="number"/> to its English textual representation in words.
+        /// Converts the <paramref name="dollars"/> to its English textual representation in words.
         /// </summary>
-        /// <param name="number">The number to convert.</param>
-        /// <returns>The number in words, e.g. Four hundred fifty-six.</returns>
-        public static string ConvertNumberToWords(int number)
+        /// <param name="dollars">The dollar amount to convert.</param>
+        /// <returns>The number in words, e.g. Four hundred fifty-six and 00/100.</returns>
+        public static string Convert(decimal dollars)
         {
+            var wholeNumber = (int)Math.Truncate(dollars);
+            var decimalPlaces = (int)(dollars % 1 * 100);
+
+            var words = ConvertNumberToWords(wholeNumber).ToUpper();
+            if (dollars < 101)
+            {
+                words = words.Replace('-', ' ');
+            }
+
+            return $"{words} and {decimalPlaces}/100";
+        }
+
+        private static string ConvertNumberToWords(int number)
+        {
+            // Credit: http://stackoverflow.com/a/2730393/4403297
+
             if (number == 0)
-                return "zero";
+                return "Zero";
 
             if (number < 0)
-                return "minus " + ConvertNumberToWords(Math.Abs(number));
+                return "Minus " + ConvertNumberToWords(Math.Abs(number));
 
-            string words = "";
+            var words = "";
 
-            if ((number / 1000000) > 0)
+            if (number / 1000000 > 0)
             {
-                words += ConvertNumberToWords(number / 1000000) + " million ";
+                words += ConvertNumberToWords(number / 1000000) + " Million ";
                 number %= 1000000;
             }
 
-            if ((number / 1000) > 0)
+            if (number / 1000 > 0)
             {
-                words += ConvertNumberToWords(number / 1000) + " thousand ";
+                words += ConvertNumberToWords(number / 1000) + " Thousand ";
                 number %= 1000;
             }
 
-            if ((number / 100) > 0)
+            if (number / 100 > 0)
             {
-                words += ConvertNumberToWords(number / 100) + " hundred ";
+                words += ConvertNumberToWords(number / 100) + " Hundred ";
                 number %= 100;
             }
 
             if (number > 0)
             {
-                if (words != "")
-                    words += "and ";
+                //if (words != "")
+                //    words += "and ";
 
-                var unitsMap = new[] { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" };
-                var tensMap = new[] { "zero", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
+                var unitsMap = new[] { "Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen" };
+                var tensMap = new[] { "Zero", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety" };
 
                 if (number < 20)
                     words += unitsMap[number];
                 else
                 {
                     words += tensMap[number / 10];
-                    if ((number % 10) > 0)
+                    if (number % 10 > 0)
                         words += "-" + unitsMap[number % 10];
                 }
             }
