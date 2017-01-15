@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CheckPrinting
@@ -15,6 +8,13 @@ namespace CheckPrinting
         public Main()
         {
             InitializeComponent();
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+            datePicker.Value = DateTime.Now;
+            // Checks are typically void after 90 days, but we'll allow a bit more leeway
+            datePicker.MinDate = DateTime.Now.AddYears(-1);
         }
     }
 }
