@@ -20,7 +20,7 @@ namespace CheckPrinting
                 words = words.Replace('-', ' ');
             }
 
-            return $"{words} and {decimalPlaces}/100";
+            return $"{words} AND {decimalPlaces}/100";
         }
 
         private static string ConvertNumberToWords(int number)

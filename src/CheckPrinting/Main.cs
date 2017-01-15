@@ -15,10 +15,12 @@ namespace CheckPrinting
 
             Application.ThreadException += (sender, args) =>
             {
+                EnableControls(this);
                 SetErrorStatus(args.Exception.Message);
             };
             AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
             {
+                EnableControls(this);
                 SetErrorStatus((args.ExceptionObject as Exception).Message);
             };
         }
@@ -54,9 +56,13 @@ namespace CheckPrinting
         private void btnPrint_Click(object sender, EventArgs e)
         {
             ResetStatus();
+            DisableControls(this);
+            EnableControls(lblStatus);
+            EnableControls(tabControl);
 
             if (!ValidatePrint())
             {
+                EnableControls(this);
                 return;
             }
 
@@ -71,6 +77,7 @@ namespace CheckPrinting
                 printer.RemoveCheck();
             }
 
+            EnableControls(this);
             ResetStatus();
         }
 
@@ -137,9 +144,13 @@ namespace CheckPrinting
         private void btnEndorse_Click(object sender, EventArgs e)
         {
             ResetStatus();
+            DisableControls(this);
+            EnableControls(lblStatus);
+            EnableControls(tabControl);
 
             if (!ValidateEndorse())
             {
+                EnableControls(this);
                 return;
             }
 
@@ -154,6 +165,7 @@ namespace CheckPrinting
                 printer.RemoveCheck();
             }
 
+            EnableControls(this);
             ResetStatus();
         }
 
@@ -168,6 +180,26 @@ namespace CheckPrinting
             {
                 errorProvider.SetError(txtAmount, "The amount must be a decimal number, e.g. 123.45");
             }
+        }
+
+        private void DisableControls(Control control)
+        {
+            foreach (Control c in control.Controls)
+            {
+                DisableControls(c);
+            }
+
+            control.Enabled = false;
+        }
+
+        private void EnableControls(Control control)
+        {
+            foreach (Control c in control.Controls)
+            {
+                EnableControls(c);
+            }
+
+            control.Enabled = true;
         }
     }
 }

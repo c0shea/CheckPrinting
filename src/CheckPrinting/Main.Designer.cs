@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPayee = new System.Windows.Forms.TabPage();
             this.datePicker = new System.Windows.Forms.DateTimePicker();
             this.btnPrint = new System.Windows.Forms.Button();
@@ -47,23 +47,23 @@
             this.txtLogicalName = new System.Windows.Forms.TextBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.lblStatus = new System.Windows.Forms.Label();
-            this.tabControl1.SuspendLayout();
+            this.tabControl.SuspendLayout();
             this.tabPayee.SuspendLayout();
             this.tabEndorse.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // tabControl
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPayee);
-            this.tabControl1.Controls.Add(this.tabEndorse);
-            this.tabControl1.Location = new System.Drawing.Point(16, 57);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(428, 248);
-            this.tabControl1.TabIndex = 0;
+            this.tabControl.Controls.Add(this.tabPayee);
+            this.tabControl.Controls.Add(this.tabEndorse);
+            this.tabControl.Location = new System.Drawing.Point(16, 57);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(428, 248);
+            this.tabControl.TabIndex = 0;
             // 
             // tabPayee
             // 
@@ -203,12 +203,12 @@
             // 
             this.txtEndorsement.AcceptsReturn = true;
             this.txtEndorsement.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEndorsement.Location = new System.Drawing.Point(58, 31);
+            this.txtEndorsement.Location = new System.Drawing.Point(81, 11);
             this.txtEndorsement.Multiline = true;
             this.txtEndorsement.Name = "txtEndorsement";
-            this.txtEndorsement.Size = new System.Drawing.Size(287, 104);
+            this.txtEndorsement.Size = new System.Drawing.Size(258, 128);
             this.txtEndorsement.TabIndex = 10;
-            this.txtEndorsement.Text = "   FOR DEPOSIT ONLY\r\n";
+            this.txtEndorsement.Text = "FOR DEPOSIT ONLY\r\n";
             // 
             // btnEndorse
             // 
@@ -217,7 +217,7 @@
             this.btnEndorse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEndorse.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEndorse.ForeColor = System.Drawing.Color.White;
-            this.btnEndorse.Location = new System.Drawing.Point(142, 161);
+            this.btnEndorse.Location = new System.Drawing.Point(143, 161);
             this.btnEndorse.Name = "btnEndorse";
             this.btnEndorse.Size = new System.Drawing.Size(134, 36);
             this.btnEndorse.TabIndex = 9;
@@ -256,9 +256,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblStatus.BackColor = System.Drawing.Color.AliceBlue;
-            this.lblStatus.Location = new System.Drawing.Point(-4, 312);
+            this.lblStatus.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.Location = new System.Drawing.Point(-3, 312);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(462, 65);
+            this.lblStatus.Padding = new System.Windows.Forms.Padding(5);
+            this.lblStatus.Size = new System.Drawing.Size(461, 65);
             this.lblStatus.TabIndex = 3;
             this.lblStatus.Text = "Ready.";
             this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -272,13 +274,13 @@
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.txtLogicalName);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabControl);
             this.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Main";
             this.Text = "Check Printing";
             this.Load += new System.EventHandler(this.Main_Load);
-            this.tabControl1.ResumeLayout(false);
+            this.tabControl.ResumeLayout(false);
             this.tabPayee.ResumeLayout(false);
             this.tabPayee.PerformLayout();
             this.tabEndorse.ResumeLayout(false);
@@ -291,7 +293,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPayee;
         private System.Windows.Forms.TabPage tabEndorse;
         private System.Windows.Forms.TextBox txtMemo;

@@ -79,7 +79,7 @@ namespace CheckPrinting
 
             foreach (var line in lines)
             {
-                data += Spaces(12) + $"{line,-30}\n";
+                data += Spaces(15) + $"{line,-30}\n";
             }
 
             PosPrinter.PrintNormal(PrinterStation.Slip, data);
