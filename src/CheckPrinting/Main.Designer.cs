@@ -28,29 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPay = new System.Windows.Forms.TabPage();
-            this.tabEndorse = new System.Windows.Forms.TabPage();
-            this.lblDate = new System.Windows.Forms.Label();
-            this.txtPayToTheOrderOf = new System.Windows.Forms.TextBox();
-            this.lblPayToTheOrderOf = new System.Windows.Forms.Label();
-            this.txtAmount = new System.Windows.Forms.TextBox();
-            this.lblAmount = new System.Windows.Forms.Label();
+            this.datePicker = new System.Windows.Forms.DateTimePicker();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.txtMemo = new System.Windows.Forms.TextBox();
             this.lblMemo = new System.Windows.Forms.Label();
+            this.txtAmount = new System.Windows.Forms.TextBox();
+            this.lblAmount = new System.Windows.Forms.Label();
+            this.txtPayToTheOrderOf = new System.Windows.Forms.TextBox();
+            this.lblPayToTheOrderOf = new System.Windows.Forms.Label();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.tabEndorse = new System.Windows.Forms.TabPage();
+            this.txtEndorsement = new System.Windows.Forms.TextBox();
+            this.btnEndorse = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.txtLogicalName = new System.Windows.Forms.TextBox();
-            this.btnPrint = new System.Windows.Forms.Button();
-            this.btnEndorse = new System.Windows.Forms.Button();
-            this.txtEndorsement = new System.Windows.Forms.TextBox();
-            this.datePicker = new System.Windows.Forms.DateTimePicker();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lblStatus = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPay.SuspendLayout();
             this.tabEndorse.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPay);
             this.tabControl1.Controls.Add(this.tabEndorse);
             this.tabControl1.Location = new System.Drawing.Point(16, 57);
@@ -78,6 +84,108 @@
             this.tabPay.Text = "Pay";
             this.tabPay.UseVisualStyleBackColor = true;
             // 
+            // datePicker
+            // 
+            this.datePicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.datePicker.CustomFormat = "MM/dd/yyyy";
+            this.datePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.datePicker.Location = new System.Drawing.Point(105, 6);
+            this.datePicker.Name = "datePicker";
+            this.datePicker.Size = new System.Drawing.Size(132, 27);
+            this.datePicker.TabIndex = 9;
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPrint.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnPrint.FlatAppearance.BorderSize = 0;
+            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrint.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.ForeColor = System.Drawing.Color.White;
+            this.btnPrint.Location = new System.Drawing.Point(143, 167);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(134, 36);
+            this.btnPrint.TabIndex = 8;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // txtMemo
+            // 
+            this.txtMemo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMemo.Location = new System.Drawing.Point(105, 125);
+            this.txtMemo.MaxLength = 100;
+            this.txtMemo.Name = "txtMemo";
+            this.txtMemo.Size = new System.Drawing.Size(292, 27);
+            this.txtMemo.TabIndex = 7;
+            // 
+            // lblMemo
+            // 
+            this.lblMemo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblMemo.AutoSize = true;
+            this.lblMemo.Location = new System.Drawing.Point(6, 128);
+            this.lblMemo.Name = "lblMemo";
+            this.lblMemo.Size = new System.Drawing.Size(55, 20);
+            this.lblMemo.TabIndex = 6;
+            this.lblMemo.Text = "Memo:";
+            // 
+            // txtAmount
+            // 
+            this.txtAmount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtAmount.Location = new System.Drawing.Point(105, 92);
+            this.txtAmount.MaxLength = 14;
+            this.txtAmount.Name = "txtAmount";
+            this.txtAmount.Size = new System.Drawing.Size(132, 27);
+            this.txtAmount.TabIndex = 5;
+            // 
+            // lblAmount
+            // 
+            this.lblAmount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblAmount.AutoSize = true;
+            this.lblAmount.Location = new System.Drawing.Point(6, 95);
+            this.lblAmount.Name = "lblAmount";
+            this.lblAmount.Size = new System.Drawing.Size(65, 20);
+            this.lblAmount.TabIndex = 4;
+            this.lblAmount.Text = "Amount:";
+            // 
+            // txtPayToTheOrderOf
+            // 
+            this.txtPayToTheOrderOf.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPayToTheOrderOf.Location = new System.Drawing.Point(105, 56);
+            this.txtPayToTheOrderOf.MaxLength = 120;
+            this.txtPayToTheOrderOf.Name = "txtPayToTheOrderOf";
+            this.txtPayToTheOrderOf.Size = new System.Drawing.Size(292, 27);
+            this.txtPayToTheOrderOf.TabIndex = 3;
+            // 
+            // lblPayToTheOrderOf
+            // 
+            this.lblPayToTheOrderOf.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPayToTheOrderOf.AutoSize = true;
+            this.lblPayToTheOrderOf.Location = new System.Drawing.Point(6, 45);
+            this.lblPayToTheOrderOf.Name = "lblPayToTheOrderOf";
+            this.lblPayToTheOrderOf.Size = new System.Drawing.Size(91, 40);
+            this.lblPayToTheOrderOf.TabIndex = 2;
+            this.lblPayToTheOrderOf.Text = "Pay to\r\nthe order of:";
+            // 
+            // lblDate
+            // 
+            this.lblDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDate.AutoSize = true;
+            this.lblDate.Location = new System.Drawing.Point(6, 11);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(44, 20);
+            this.lblDate.TabIndex = 0;
+            this.lblDate.Text = "Date:";
+            // 
             // tabEndorse
             // 
             this.tabEndorse.Controls.Add(this.txtEndorsement);
@@ -90,96 +198,14 @@
             this.tabEndorse.Text = "Endorse";
             this.tabEndorse.UseVisualStyleBackColor = true;
             // 
-            // lblDate
+            // txtEndorsement
             // 
-            this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(6, 11);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(44, 20);
-            this.lblDate.TabIndex = 0;
-            this.lblDate.Text = "Date:";
-            // 
-            // txtPayToTheOrderOf
-            // 
-            this.txtPayToTheOrderOf.Location = new System.Drawing.Point(105, 56);
-            this.txtPayToTheOrderOf.MaxLength = 120;
-            this.txtPayToTheOrderOf.Name = "txtPayToTheOrderOf";
-            this.txtPayToTheOrderOf.Size = new System.Drawing.Size(302, 27);
-            this.txtPayToTheOrderOf.TabIndex = 3;
-            // 
-            // lblPayToTheOrderOf
-            // 
-            this.lblPayToTheOrderOf.AutoSize = true;
-            this.lblPayToTheOrderOf.Location = new System.Drawing.Point(6, 45);
-            this.lblPayToTheOrderOf.Name = "lblPayToTheOrderOf";
-            this.lblPayToTheOrderOf.Size = new System.Drawing.Size(91, 40);
-            this.lblPayToTheOrderOf.TabIndex = 2;
-            this.lblPayToTheOrderOf.Text = "Pay to\r\nthe order of:";
-            // 
-            // txtAmount
-            // 
-            this.txtAmount.Location = new System.Drawing.Point(105, 92);
-            this.txtAmount.MaxLength = 14;
-            this.txtAmount.Name = "txtAmount";
-            this.txtAmount.Size = new System.Drawing.Size(132, 27);
-            this.txtAmount.TabIndex = 5;
-            // 
-            // lblAmount
-            // 
-            this.lblAmount.AutoSize = true;
-            this.lblAmount.Location = new System.Drawing.Point(6, 95);
-            this.lblAmount.Name = "lblAmount";
-            this.lblAmount.Size = new System.Drawing.Size(65, 20);
-            this.lblAmount.TabIndex = 4;
-            this.lblAmount.Text = "Amount:";
-            // 
-            // txtMemo
-            // 
-            this.txtMemo.Location = new System.Drawing.Point(105, 125);
-            this.txtMemo.MaxLength = 100;
-            this.txtMemo.Name = "txtMemo";
-            this.txtMemo.Size = new System.Drawing.Size(302, 27);
-            this.txtMemo.TabIndex = 7;
-            // 
-            // lblMemo
-            // 
-            this.lblMemo.AutoSize = true;
-            this.lblMemo.Location = new System.Drawing.Point(6, 128);
-            this.lblMemo.Name = "lblMemo";
-            this.lblMemo.Size = new System.Drawing.Size(55, 20);
-            this.lblMemo.TabIndex = 6;
-            this.lblMemo.Text = "Memo:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 15);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(104, 20);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Logical Name:";
-            // 
-            // txtLogicalName
-            // 
-            this.txtLogicalName.Location = new System.Drawing.Point(135, 12);
-            this.txtLogicalName.MaxLength = 1000;
-            this.txtLogicalName.Name = "txtLogicalName";
-            this.txtLogicalName.Size = new System.Drawing.Size(292, 27);
-            this.txtLogicalName.TabIndex = 2;
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnPrint.FlatAppearance.BorderSize = 0;
-            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrint.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrint.ForeColor = System.Drawing.Color.White;
-            this.btnPrint.Location = new System.Drawing.Point(143, 167);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(134, 36);
-            this.btnPrint.TabIndex = 8;
-            this.btnPrint.Text = "Print";
-            this.btnPrint.UseVisualStyleBackColor = false;
+            this.txtEndorsement.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEndorsement.Location = new System.Drawing.Point(58, 31);
+            this.txtEndorsement.Multiline = true;
+            this.txtEndorsement.Name = "txtEndorsement";
+            this.txtEndorsement.Size = new System.Drawing.Size(316, 66);
+            this.txtEndorsement.TabIndex = 10;
             // 
             // btnEndorse
             // 
@@ -195,30 +221,51 @@
             this.btnEndorse.Text = "Endorse";
             this.btnEndorse.UseVisualStyleBackColor = false;
             // 
-            // txtEndorsement
+            // label5
             // 
-            this.txtEndorsement.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEndorsement.Location = new System.Drawing.Point(58, 31);
-            this.txtEndorsement.Multiline = true;
-            this.txtEndorsement.Name = "txtEndorsement";
-            this.txtEndorsement.Size = new System.Drawing.Size(316, 66);
-            this.txtEndorsement.TabIndex = 10;
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 15);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(104, 20);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Logical Name:";
             // 
-            // datePicker
+            // txtLogicalName
             // 
-            this.datePicker.CustomFormat = "MM/dd/yyyy";
-            this.datePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.datePicker.Location = new System.Drawing.Point(105, 6);
-            this.datePicker.Name = "datePicker";
-            this.datePicker.Size = new System.Drawing.Size(132, 27);
-            this.datePicker.TabIndex = 9;
+            this.txtLogicalName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLogicalName.Location = new System.Drawing.Point(135, 12);
+            this.txtLogicalName.MaxLength = 1000;
+            this.txtLogicalName.Name = "txtLogicalName";
+            this.txtLogicalName.Size = new System.Drawing.Size(292, 27);
+            this.txtLogicalName.TabIndex = 2;
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblStatus.BackColor = System.Drawing.Color.AliceBlue;
+            this.lblStatus.Location = new System.Drawing.Point(-4, 312);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(462, 65);
+            this.lblStatus.TabIndex = 3;
+            this.lblStatus.Text = "Ready.";
+            this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(457, 321);
+            this.ClientSize = new System.Drawing.Size(457, 377);
+            this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.txtLogicalName);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.tabControl1);
@@ -232,6 +279,7 @@
             this.tabPay.PerformLayout();
             this.tabEndorse.ResumeLayout(false);
             this.tabEndorse.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -255,6 +303,8 @@
         private System.Windows.Forms.Button btnEndorse;
         private System.Windows.Forms.TextBox txtEndorsement;
         private System.Windows.Forms.DateTimePicker datePicker;
+        private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.Label lblStatus;
     }
 }
 
