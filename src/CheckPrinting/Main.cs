@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Drawing;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace CheckPrinting
 {
     public partial class Main : Form
     {
+        private decimal _amount;
+
         public Main()
         {
             InitializeComponent();
@@ -33,6 +36,7 @@ namespace CheckPrinting
         {
             SetStatus("Ready.");
             lblStatus.BackColor = Color.AliceBlue;
+            errorProvider.Clear();
         }
 
         private void SetErrorStatus(string errorMessage)
@@ -62,7 +66,7 @@ namespace CheckPrinting
                 SetStatus("Please insert check into printer.");
                 printer.InsertCheck();
                 SetStatus("Printing...");
-                printer.PrintCheck(datePicker.Value, txtPayToTheOrderOf.Text, 123m, txtMemo.Text);
+                printer.PrintCheck(datePicker.Value, txtPayToTheOrderOf.Text, _amount, txtMemo.Text);
                 SetStatus("Please remove check from printer.");
                 printer.RemoveCheck();
             }
@@ -92,12 +96,78 @@ namespace CheckPrinting
                 isValid = false;
             }
 
+            if (!decimal.TryParse(txtAmount.Text, out _amount))
+            {
+                errorProvider.SetError(txtAmount, "The amount must be a decimal number, e.g. 123.45");
+                isValid = false;
+            }
+
             if (!isValid)
             {
                 SetErrorStatus("There are form errors that must be resolved before the check can be printed.");
             }
 
             return isValid;
+        }
+
+        private bool ValidateEndorse()
+        {
+            var isValid = true;
+
+            if (string.IsNullOrWhiteSpace(txtLogicalName.Text))
+            {
+                errorProvider.SetError(txtLogicalName, "A logical name must be specified in order to endorse the check.");
+                isValid = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtEndorsement.Text))
+            {
+                errorProvider.SetError(txtPayToTheOrderOf, "An endorsement must be specified.");
+                isValid = false;
+            }
+            
+            if (!isValid)
+            {
+                SetErrorStatus("There are form errors that must be resolved before the check can be endorsed.");
+            }
+
+            return isValid;
+        }
+
+        private void btnEndorse_Click(object sender, EventArgs e)
+        {
+            ResetStatus();
+
+            if (!ValidateEndorse())
+            {
+                return;
+            }
+
+            SetStatus("Connecting to printer...");
+            using (var printer = new Printer(txtLogicalName.Text))
+            {
+                SetStatus("Please insert check into printer.");
+                printer.InsertCheck();
+                SetStatus("Printing...");
+                printer.Endorse(txtEndorsement.Lines);
+                SetStatus("Please remove check from printer.");
+                printer.RemoveCheck();
+            }
+
+            ResetStatus();
+        }
+
+        private void txtAmount_TextChanged(object sender, EventArgs e)
+        {
+            decimal test;
+            if (decimal.TryParse(txtAmount.Text, out test))
+            {
+                errorProvider.SetError(txtAmount, "");
+            }
+            else
+            {
+                errorProvider.SetError(txtAmount, "The amount must be a decimal number, e.g. 123.45");
+            }
         }
     }
 }

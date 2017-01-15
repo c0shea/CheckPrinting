@@ -142,6 +142,7 @@
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(132, 27);
             this.txtAmount.TabIndex = 2;
+            this.txtAmount.TextChanged += new System.EventHandler(this.txtAmount_TextChanged);
             // 
             // lblAmount
             // 
@@ -200,12 +201,14 @@
             // 
             // txtEndorsement
             // 
+            this.txtEndorsement.AcceptsReturn = true;
             this.txtEndorsement.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEndorsement.Location = new System.Drawing.Point(58, 31);
             this.txtEndorsement.Multiline = true;
             this.txtEndorsement.Name = "txtEndorsement";
-            this.txtEndorsement.Size = new System.Drawing.Size(316, 66);
+            this.txtEndorsement.Size = new System.Drawing.Size(287, 104);
             this.txtEndorsement.TabIndex = 10;
+            this.txtEndorsement.Text = "   FOR DEPOSIT ONLY\r\n";
             // 
             // btnEndorse
             // 
@@ -220,6 +223,7 @@
             this.btnEndorse.TabIndex = 9;
             this.btnEndorse.Text = "Endorse";
             this.btnEndorse.UseVisualStyleBackColor = false;
+            this.btnEndorse.Click += new System.EventHandler(this.btnEndorse_Click);
             // 
             // label5
             // 

@@ -60,7 +60,7 @@ namespace CheckPrinting
             data += Spaces(43) + $"{date,-10:MM/dd/yyyy}" + Spaces(7) + "\n";
             data += FeedLines(2);
 
-            data += Spaces(2) + $"{payee,-40}" + Spaces(6) + $"{$"*{amount:0.00}*",-10}" + Spaces(1) + "\n\n";
+            data += Spaces(2) + $"{payee,-40}" + Spaces(5) + $"{$"*{amount:0.00}*",-12}\n\n";
 
             data += $"{"*" + NumberToWords.Convert(amount) + "*",-60}\n";
             data += FeedLines(4);
@@ -71,6 +71,18 @@ namespace CheckPrinting
             PosPrinter.PrintNormal(PrinterStation.Slip, data);
             PosPrinter.RotatePrint(PrinterStation.Slip, PrintRotation.Normal);
             PosPrinter.PrintNormal(PrinterStation.Slip, "");
+        }
+
+        public void Endorse(string[] lines)
+        {
+            var data = "";
+
+            foreach (var line in lines)
+            {
+                data += Spaces(12) + $"{line,-30}\n";
+            }
+
+            PosPrinter.PrintNormal(PrinterStation.Slip, data);
         }
 
         private string Spaces(int numberOfSpaces)
